@@ -1,23 +1,34 @@
 {% block modalPizzaSenior %}
 
 <!-- Modal Sénior-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="example{{ menus.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center" id="exampleModalLabel">Pizza Sénior 7,50€</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ menus.nom }} {{ menus.prix }}</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h5>Choisissez votre pizza</h5>
-                <p>Pizza 1</p>
-                <p>Pizza 2</p>
-                <p>Pizza 3</p>
-                <p>Pizza 4</p>
+                <h5 class="text-center"> Veuillez choisir : </h5>
+
+                    {% for detail in menus.produits %}
+
+                       <a href="{{ path("cart_add", {id: detail.id} ) }}" class="btn btn-primary">
+                           <i class="fa-solid fa-cart-plus"></i>
+                       </a>
+
+                            {{ detail.libelle }} : {{ detail.compo }}
+
+                        <hr>
+
+                    {% endfor %}
+
+
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+
             </div>
         </div>
     </div>

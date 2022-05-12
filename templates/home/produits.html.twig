@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commander{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row mt-1">
+            {% for menus in menu %}
+                <div class="col-lg-3 text-center border border-dark">
+                    <img class="bd-placeholder-img rounded-circle" src="https://t3.ftcdn.net/jpg/00/68/11/32/360_F_68113270_UtqNBAgsLTe3XUlFduuKhfs4SZdn0ZpL.jpg" width="140" height="140"  role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <h2>{{ menus.nom }}</h2>
+                    <p>{{ menus.prix }}</p>
+                    <p> <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#example{{ menus.id }}">
+                            Acheter
+                        </button></p>
+                </div><!-- /.col-lg-3 -->
+            {% block modalPizzaSenior %}
+                {% include "modal/modalPizzaSenior.html.twig" %}
+            {% endblock %}
+            {% endfor %}<br>
+
+        </div><!-- /.row -->
+
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

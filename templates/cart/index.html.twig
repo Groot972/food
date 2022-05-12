@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block body %}
+
+    <h2 class="text-center">Mon Panier</h2><br>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Menu</th>
+            <th>Composition</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>Sous total</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for data in dpanier %}
+            <tr>
+                <td>{{ data.produit.menu.nom }}</td>
+                <td>{{ data.produit.compo }}</td>
+                <td class="text-center">{{ data.quantite }}</td>
+                <td class="text-center">{{ data.produit.menu.prix }} €</td>
+                <td class="text-center">{{ data.sstotal }} €</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td class="text-end"> {{ total }} €</td>
+            <td><a href="{{ path('app_shop') }}"><button class="btn-danger">Commander</button> </a> </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}
