@@ -1,0 +1,33 @@
+{% block modalTel %}
+
+    <!-- Modal Sénior-->
+    <div class="modal fade" id="tel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Modification du numéro de téléphone</span>
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" action="">
+
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Nouveau numéro</label>
+                            <input type="text" class="form-control" id="mdp" placeholder="" value="" required>
+                        </div> <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Confirmer</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

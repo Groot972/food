@@ -5,30 +5,26 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">{{ menus.nom }} {{ menus.prix }}</h4>
+                <h4 class="modal-title" id="exampleModalLabel">{{ menus.nom }} {{ menus.prix }} €</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <h5 class="text-center"> Veuillez choisir : </h5>
 
                     {% for detail in menus.produits %}
+                        {{ detail.libelle }} : {{ detail.compo }}
 
-                       <a href="{{ path("cart_add", {id: detail.id} ) }}" class="btn btn-primary">
+                       <a href="{{ path("cart_add", {id: detail.id} ) }}">
+                        <button class="btn btn-success">
                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
                        </a>
 
-                            {{ detail.libelle }} : {{ detail.compo }}
-
                         <hr>
-
                     {% endfor %}
-
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-
             </div>
         </div>
     </div>

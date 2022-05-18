@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="p-4 p-md-5 mb-4 mt-5 text-white text-center rounded bg-dark">
+            <div class="">
+                <h1 class="display-4">Mon Compte</h1>
+            </div>
+        </div>
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-4 col-lg-4 d-md-block bg-secondary sidebar collapse text-white border-top border">
+                <div class="position-sticky pt-3">
+                    <h5 class="text-center px-3 mt-4 mb-1 text-white">
+                        <span>Mes Infos Perso.</span>
+
+                    </h5><br>
+                    <p class="d-flex justify-content-between align-items-center px-3 mt-2 mb-1 ">Prénom  : {{ app.user }}</p>
+                    <p class="d-flex justify-content-between align-items-center px-3 mt-2 mb-1 ">Téléphone  : {{ app.user.telephone }}</p>
+<br><hr>
+
+                    <h5 class="text-center px-3 mt-4 mb-1 text-white">
+                        <span>Mon Compte</span>
+
+                    </h5><br>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#mdp">
+                                <span data-feather="file-text"></span>
+                               Modifier mon mot de passe
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white"  data-bs-toggle="modal" data-bs-target="#tel">
+                                <span data-feather="file-text"></span>
+                                Modifier mon téléphone
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            {% block modalMdp %}
+                {% include "modal/modalMotdepasse.html.twig" %}
+            {% endblock %}
+            {% block modalTel %}
+                {% include "modal/modalTel.html.twig" %}
+            {% endblock %}
+            <main class="col-md-8 col-lg-8 d-md-block bg-light ">
+                <div class="pt-3 pb-2 mb-3 border-bottom border-top">
+                <h2 class="text-center">Commandes</h2>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <th>Commande du : </th>
+                            <th>Montant </th>
+                            <th>Adresse de livraison</th>
+                            <th>Etat </th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            {% for data in data %}
+                                <tr>
+                                    <td>{{ data.date|date('d-m-Y H:i') }}</td>
+                                    <td>{{ data.total }} €</td>
+                                    <td>{{ data.adresse.libelle }} {{ data.adresse.complement }} {{ data.adresse.codePostal }} {{ data.adresse.ville }}</td>
+                                    <td>{{ data.etat }}</td>
+                                    <td><i class="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#example{{ data.id }}"></i>
+                                    </td>
+                                </tr>
+
+                                {% block modalCommande %}
+                                    {% include "modal/modalCommande.html.twig" %}
+                                {% endblock %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+{% endblock %}

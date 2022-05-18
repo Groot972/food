@@ -6,13 +6,18 @@
 
     <div class="container">
 
+        <div class="p-4 p-md-5 mb-4 mt-5 text-white text-center rounded bg-dark">
+            <div class="">
+                <h1 class="display-4">Nos Menus</h1>
+            </div>
+        </div>
         <!-- Three columns of text below the carousel -->
-        <div class="row mt-1">
+        <div class="row">
             {% for menus in menu %}
-                <div class="col-lg-3 text-center border border-dark">
+                <div class="col-lg-3 m-2 text-center">
                     <img class="bd-placeholder-img rounded-circle" src="https://t3.ftcdn.net/jpg/00/68/11/32/360_F_68113270_UtqNBAgsLTe3XUlFduuKhfs4SZdn0ZpL.jpg" width="140" height="140"  role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <h2>{{ menus.nom }}</h2>
-                    <p>{{ menus.prix }}</p>
+                    <p>{{ menus.prix }} €</p>
                     <p> <!-- Button trigger modal -->
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#example{{ menus.id }}">
                             Acheter
@@ -24,6 +29,7 @@
             {% endfor %}<br>
 
         </div><!-- /.row -->
+
 
 
 

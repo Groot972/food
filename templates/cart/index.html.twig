@@ -4,8 +4,14 @@
 
 {% block body %}
 
-    <h2 class="text-center">Mon Panier</h2><br>
+
 <div class="container">
+    <div class="p-4 p-md-5 mb-4 mt-5 text-white text-center rounded bg-dark">
+        <div class="">
+            <h1 class="display-4">Mon Panier</h1>
+        </div>
+    </div>
+    {% if dpanier |length > 0 %}
     <table class="table">
         <thead>
         <tr>
@@ -13,7 +19,7 @@
             <th>Composition</th>
             <th>Quantité</th>
             <th>Prix</th>
-            <th>Sous total</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -22,9 +28,17 @@
             <tr>
                 <td>{{ data.produit.menu.nom }}</td>
                 <td>{{ data.produit.compo }}</td>
-                <td class="text-center">{{ data.quantite }}</td>
+                <td class="text-center">
+                    <a href="{{ path("cart_minus", {id: data.produit.id }) }}">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </a>
+                    {{ data.quantite }}
+                    <a href="{{ path("cart_add", {id: data.produit.id }) }}">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </a>
+                </td>
                 <td class="text-center">{{ data.produit.menu.prix }} €</td>
-                <td class="text-center">{{ data.sstotal }} €</td>
+                <td><a href="{{ path('cart_supp', {id : data.produit.id}) }}"><button class="btn-danger"><i class="fa-solid fa-trash"></i></button></a></td>
 
             </tr>
         {% endfor %}
@@ -33,10 +47,16 @@
         <tr>
             <td colspan="3">Total</td>
             <td class="text-end"> {{ total }} €</td>
-            <td><a href="{{ path('app_shop') }}"><button class="btn-danger">Commander</button> </a> </td>
+            <td><a href="{{ path('adress') }}"><button class="btn-danger">Commander</button> </a> </td>
         </tr>
         </tfoot>
     </table>
+
+    {% else  %}
+        <p> Oups ! Votre panier est vide !</p>
+    {% endif  %}
 </div>
+
+
 
 {% endblock %}

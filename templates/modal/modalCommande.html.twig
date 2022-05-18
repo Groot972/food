@@ -1,0 +1,40 @@
+{% block modalCommande %}
+
+    <!-- Modal Sénior-->
+    <div class="modal fade" id="example{{ data.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Votre Commande</span>
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <ul class="list-group mb-3">
+
+                        {% for prod in data.ldc %}
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">{{ prod.produit }}</h6>
+                                    <small class="text-muted">{{ prod.produit.compo }}</small>
+                                </div>
+                                <span> x {{ prod.quantity }}</span>
+                            </li>
+                        {% endfor %}
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total </span>
+                            <strong>{{ data.total }} €</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

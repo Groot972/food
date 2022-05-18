@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Succès{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="p-4 p-md-5 mb-4 mt-5 text-white text-center rounded bg-dark">
+            <div class="">
+                <h1 class="display-4">Notification de paiement</h1>
+            </div>
+        </div>
+
+        Le paiement de la commande est accepté. <a href="{{ path('app_espace') }}">Voir 'état de ma commande</a>
+
+    </div>
+
+
+{% endblock %}
